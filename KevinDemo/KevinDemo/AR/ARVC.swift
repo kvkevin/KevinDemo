@@ -10,7 +10,14 @@ import UIKit
 import ARKit
 
 class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
-
+    private lazy var augmentedView = ARSCNView()
+    private lazy var augmentedSession = augmentedView.session
+    private lazy var augmentedScene = augmentedView.scene
+    private var augmentedFrame: ARFrame? { return augmentedSession.currentFrame }
+    private var augmentedCamera: ARCamera? {return augmentedFrame?.camera}
+    private lazy var augmentedConfiguration  = ARWorldTrackingConfiguration()
+    private lazy var selectionFeedbackGenrator = UISelectionFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -25,8 +32,9 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     
     //
     func initUI() {
-        let AugmentedView = ARSCNView()
-        self.view = AugmentedView
+        augmentedView.delegate = self
+        
+        self.view = augmentedView
         
         
         
