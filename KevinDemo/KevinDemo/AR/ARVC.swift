@@ -23,10 +23,11 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //
     func initUI() {
         let AugmentedView = ARSCNView()
         self.view = AugmentedView
+        
         
         
     }
