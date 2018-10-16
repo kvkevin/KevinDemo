@@ -42,6 +42,12 @@ target ‘KevinDemo’ do
     pod 'NIMSDK_LITE'
     pod 'PopupDialog', '~> 0.7'
     pod 'Closures'
+#    pod 'FacebookSDK'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKPlacesKit'
+    pod 'FBSDKMessengerShareKit'
 end
 
 

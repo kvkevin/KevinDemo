@@ -19,12 +19,27 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - CLImagePickerTool (2.3.1)
   - Closures (0.5)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - DynamicBlurView (3.0.1)
   - Fabric (1.7.13)
+  - FBSDKCoreKit (4.37.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.37.0):
+    - FBSDKCoreKit
+  - FBSDKMessengerShareKit (1.3.2)
+  - FBSDKPlacesKit (4.37.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.37.0):
+    - FBSDKCoreKit (~> 4.37.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -59,6 +74,11 @@ DEPENDENCIES:
   - Closures
   - Crashlytics
   - Fabric
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKMessengerShareKit
+  - FBSDKPlacesKit
+  - FBSDKShareKit
   - FMDB
   - IQActionSheetPickerView (~> 2.0.0)
   - IQKeyboardManagerSwift
@@ -84,11 +104,17 @@ SPEC CHECKSUMS:
   AWSCore: c7abfb87ef802d1c4b5dd56db64ac8b4a7823ef0
   AWSS3: 5647e89f9ac8e7033f3e5507dbb3eccc37f82b75
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CLImagePickerTool: cb3bda742d5125943190523edeb3d4751e84cde3
   Closures: ad5ebce1242de44d64505bfd3b7c25b12cad3d2e
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
+  FBSDKMessengerShareKit: 41c0b1a667d685c9433f993eb9611b3d5074e1cb
+  FBSDKPlacesKit: efdd193a9abaab00eaa4b75ca3322b132a09172c
+  FBSDKShareKit: 52e0083222c38e930eb6878007478326599195c3
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IQActionSheetPickerView: 7986373d485f144589eec2c7c3014645c885f38b
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
@@ -108,6 +134,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
   UITextView+Placeholder: 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 06c3b90ece717422dd4725adec6808543a86a494
+PODFILE CHECKSUM: c1b66fd570e4693c74b5508b3f43d9f00bb87f0f
 
 COCOAPODS: 1.4.0

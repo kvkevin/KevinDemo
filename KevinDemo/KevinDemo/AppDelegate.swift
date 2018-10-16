@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window?.rootViewController = KevinDemoTabBar()
+        
+        FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         // Override point for customization after application launch.
         return true
@@ -42,6 +46,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        let handled = FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, sourceApplication: options, annotation: options)
+//        let handled = FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication], annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        return true
+    }
+    
+    
+    
+    
+    func applicationProtectedDataDidBecomeAvailable(_ application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+    }
+    
+    
 
 
 }
