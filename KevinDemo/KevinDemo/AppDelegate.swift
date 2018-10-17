@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = KevinDemoTabBar()
         
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+        ShareSDK.registPlatforms { (platformsregister) in
+            platformsregister?.setupFacebook(withAppkey: "260327591293004", appSecret: "281c8627e906d4bbae09dd83d0ee8903", displayName: "KevinDemo")
+            platformsregister?.setupInstagram(withClientId: "cc8fe1be41244e30b22e064101108854", clientSecret: "460431370e61416e98b4232b2fd702d5", redirectUrl: "www.liangxinxin.xyz")
+        }
         
         // Override point for customization after application launch.
         return true
@@ -53,8 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let handled = FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication], annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         return true
     }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return true
+    }
     
-    
+
     
     
     func applicationProtectedDataDidBecomeAvailable(_ application: UIApplication) {

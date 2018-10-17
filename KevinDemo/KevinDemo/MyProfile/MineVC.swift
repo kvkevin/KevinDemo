@@ -44,14 +44,15 @@ class MineVC: BaseViewController,FBSDKSharingDelegate {
         let btnpost = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 100))
         btnpost.backgroundColor = UIColor.randomColor()
         self.view.addSubview(btnpost)
-        btnpost.addTarget(self, action:#selector(MineVC.shareTofaceBook), for:.touchUpInside)
+        btnpost.addTarget(self, action:#selector(MineVC.ShareToFaceBook), for:.touchUpInside)
     }
     
 
     @objc func shareTofaceBook() {
         
         let photo = FBSDKSharePhoto ()
-        photo.imageURL = URL(string: "https://s3.cn-north-1.amazonaws.com.cn/data.s3.tagtalk.co/postpics/cn/146/561280553896502.06.png")
+        photo.image = UIImage(named: "nivTitle")
+//        photo.imageURL = URL(string: "https://s3.cn-north-1.amazonaws.com.cn/data.s3.tagtalk.co/postpics/cn/146/561280553896502.06.png")
         let content  = FBSDKSharePhotoContent()
         content.photos = [photo]
         content.contentURL =  NSURL.init(string:"http://www.liangxinxin.xyz") as! URL
@@ -64,10 +65,16 @@ class MineVC: BaseViewController,FBSDKSharingDelegate {
         let dialog = FBSDKShareDialog()
         dialog.delegate = self
         dialog.fromViewController = self
-//        dialog.mode = FBSDKShareDialogMode.native
+        dialog.mode = FBSDKShareDialogMode.shareSheet
         dialog.shareContent = content
         dialog.show()
-//        FBSDKShareDialog.show(from: self, with: content, delegate: nil)
+        FBSDKShareDialog.show(from: self, with: content, delegate: self)
+        
+        
+//        let contents = FBSDKShareLinkContent()
+//        contents.contentURL = NSURL.init(string:"http://www.liangxinxin.xyz") as! URL
+//
+        
 
     }
     
@@ -91,6 +98,28 @@ class MineVC: BaseViewController,FBSDKSharingDelegate {
 //        }
     }
 
+    @objc func sharePhoto() {
+        let content = FBSDKSharePhotoContent()
+        let photo = FBSDKSharePhoto(image: UIImage(named: "testPhoto"), userGenerated: false)
+//        let photo = FBSDKSharePhoto.init(image: UIImage(named: "testPhoto", userGenerated: false))
+        content.contentURL =  NSURL.init(string:"http://www.liangxinxin.xyz") as! URL
+        content.photos = [photo]
+        
+        let dialog = FBSDKShareDialog()
+        dialog.delegate = self
+        dialog.fromViewController = self
+        dialog.mode = FBSDKShareDialogMode.shareSheet
+        dialog.shareContent = content
+        dialog.show()
+        FBSDKShareDialog.show(from: self, with: content, delegate:nil)
+        
+        
+    }
+    
+    
+    
+    
+    
 //通过facebook登录
 func loginWithFacebook(){
     let faceBookLoginManger = FBSDKLoginManager()
@@ -113,5 +142,41 @@ func loginWithFacebook(){
         }
     }
 }
+    
+    
+    
+    
+   @objc func ShareToFaceBook() {
+        let imageArray =  [UIImage(named: "testPhoto")]
+        let dic:NSMutableDictionary  = [:]
+        dic.ssdkSetupShareParams(byText: "分享到facebook", images:imageArray, url: URL(string: "http://www.liangxinxin.xyz"), title: "kevin分享", type:SSDKContentType.image)
+        dic.ssdkEnableUseClientShare()
+    //无UI分享
+    ShareSDK.share(.typeInstagram, parameters: dic) { (state, platformType, userData, error) in
+        
+        switch state{
+        case .success:
+            AlertHelper.showToastWithMessage(message: "分享成功")
+        case .fail:
+            AlertHelper.showToastWithMessage(message: "分享失败")
+        default:
+            AlertHelper.showToastWithMessage(message: "分享失败")
+            break
+    }
+    }
+
+       // 弹框分享
+        ShareSDK.showShareActionSheet(nil, items: nil, shareParams: dic) { (state, platformType, userData, contentEntity, error,end) in
+       /*回调处理*/
+        }
+
+    
+    }
+    
+    
+    
+    
+    
+    
 
 }

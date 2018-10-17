@@ -2,28 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb260327591293004</string>
-			</array>
-		</dict>
-	</array>
-	<key>FacebookAppID</key>
-	<string>260327591293004</string>
-	<key>FacebookDisplayName</key>
-	<string>KevinDemo</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>wechat</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -38,9 +16,41 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb260327591293004</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>260327591293004</string>
+	<key>FacebookDisplayName</key>
+	<string>KevinDemo</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>fbapi20130214</string>
+		<string>fbauth</string>
+		<string>wechat</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MOBAppKey</key>
+	<string>25336615fd392</string>
+	<key>MOBAppSecret</key>
+	<string>deb9f56c4525f9f54a4dd17a42708c33</string>
+	<key>NSAllowsArbitraryLoads</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
