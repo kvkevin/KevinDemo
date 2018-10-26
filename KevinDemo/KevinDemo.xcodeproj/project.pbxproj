@@ -837,7 +837,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/share/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ".scale-";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.liangxinxin.kevindemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KevinDemo/KevinDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -871,7 +871,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/share/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ".scale-";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.liangxinxin.kevindemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KevinDemo/KevinDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

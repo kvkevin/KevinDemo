@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+import SceneKit
 
 class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     private lazy var augmentedView = ARSCNView()
@@ -17,13 +18,15 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     private var augmentedCamera: ARCamera? {return augmentedFrame?.camera}
     private lazy var augmentedConfiguration  = ARWorldTrackingConfiguration()
     private lazy var selectionFeedbackGenrator = UISelectionFeedbackGenerator()
-    private lazy var pimpNode  = PumpkinNode()
+    private lazy var pumpNode  = PumpkinNode()
+    var wolfNode: SCNNode!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         addReSetbtn()
-
+//        let scene = SCNScene()
+//        augmentedScene = scene
         // Do any additional setup after loading the view.
     }
 
@@ -35,8 +38,10 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     //初始化
     func initUI() {
         augmentedView.delegate = self
+        augmentedView.showsStatistics =  true
         self.view = augmentedView
-        augmentedView.debugOptions =  [.showWorldOrigin,.showFeaturePoints]//设置调试信息
+        augmentedConfiguration.planeDetection = .horizontal
+        augmentedView.debugOptions =  [.showFeaturePoints]//设置调试信息
 
         
         
@@ -45,7 +50,8 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     //页面出现开始AR识别
     override func viewWillAppear(_ animated: Bool) {
         augmentedSession.run(augmentedConfiguration)//启动AR
-        augmentedScene.rootNode.addChildNode(pimpNode)//添加南瓜
+//        augmentedScene.rootNode.addChildNode(pumpNode)//添加南瓜
+        
 
     }
     
@@ -68,7 +74,37 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
     }
     
     
-    
+    /** create and return ARPlaneNode */
+    func createARPlaneNode(anchor: ARPlaneAnchor) -> SCNNode {
+        let pos = SCNVector3Make(anchor.transform.columns.3.x, anchor.transform.columns.3.y, anchor.transform.columns.3.z)
+        //        print("New surface detected at \(pos)")
+        
+        // Create the geometry and its materials
+        let plane = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
+        let grassImage = UIImage(named: "grass")
+        let grassMaterial = SCNMaterial()
+        grassMaterial.diffuse.contents = grassImage
+        grassMaterial.isDoubleSided = true
+        plane.materials = [grassMaterial]
+        // Create a plane node with the plane geometry
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.position = pos
+        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        
+        // add the wolf to pos of the plane node
+        if wolfNode == nil {
+            if let wolfScene = SCNScene(named: "art.scnassets/pumpkin.dae") {
+//                wolfNode = wolfScene.rootNode.childNode(withName: "pumpkin", recursively: true)
+                wolfNode = wolfScene.rootNode.childNodes.first
+                pumpNode.position = pos
+//                augmentedView.scene.rootNode.addChildNode(wolfNode!)
+                pumpNode.scale = SCNVector3Make(0.3, 0.3, 0.3)
+                augmentedScene.rootNode.addChildNode(pumpNode)//添加南瓜
+
+            }
+        }
+        return planeNode
+    }
     
     func sessionWasInterrupted(_ session: ARSession) {
         print("AR被打断")
@@ -84,6 +120,39 @@ class ARVC: BaseViewController,ARSCNViewDelegate,ARSessionDelegate{
         frame.rawFeaturePoints.debugDescription
     }
     
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+//        print(node)
+//        print(anchor.accessibilityActivationPoint)
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        let planeNode = createARPlaneNode(anchor: planeAnchor)
+//        node.addChildNode(planeNode)
+        
+        
+    }
+    
+    
+    
+    // when detected new plane, update
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        // remove existing plane nodes
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+        let planeNode = createARPlaneNode(anchor: planeAnchor)
+//        node.addChildNode(planeNode)
+    }
+    
+    
+    // when detected plane removed, didRemove the plane
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard anchor is ARPlaneAnchor else { return }
+        // remove existing plane nodes
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+    }
     
     
 
