@@ -68,6 +68,9 @@
 		98DC8B982176DE570090EC38 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DC8B972176DE570090EC38 /* JavaScriptCore.framework */; };
 		98DC8B9A2176DE6B0090EC38 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DC8B992176DE6B0090EC38 /* AssetsLibrary.framework */; };
 		98DC8B9C2176DE720090EC38 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DC8B9B2176DE720090EC38 /* Photos.framework */; };
+		98DC8BA221782C800090EC38 /* BaseWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DC8BA121782C800090EC38 /* BaseWebVC.swift */; };
+		98DC8BA421798AF70090EC38 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 98DC8BA321798AF70090EC38 /* art.scnassets */; };
+		98DF88F321801883003B6BFD /* PumpkinNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF88F221801883003B6BFD /* PumpkinNode.swift */; };
 		CE0242CA62D019B9E604866B /* Pods_KevinDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD6290BF6C3841EBDB54428 /* Pods_KevinDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +148,9 @@
 		98DC8B992176DE6B0090EC38 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		98DC8B9B2176DE720090EC38 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		98DC8B9D2176E5BD0090EC38 /* KevinDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KevinDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		98DC8BA121782C800090EC38 /* BaseWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebVC.swift; sourceTree = "<group>"; };
+		98DC8BA321798AF70090EC38 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		98DF88F221801883003B6BFD /* PumpkinNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpkinNode.swift; sourceTree = "<group>"; };
 		B2C34A33C9A519BFB3A9E119 /* Pods-KevinDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KevinDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KevinDemo/Pods-KevinDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +242,8 @@
 				98055AB02147C09E00C3B47D /* Info.plist */,
 				981FCB0D215E07E2006477F6 /* KevinDemoTabBar.swift */,
 				98DC8B9D2176E5BD0090EC38 /* KevinDemo-Bridging-Header.h */,
+				98DC8BA121782C800090EC38 /* BaseWebVC.swift */,
+				98DC8BA321798AF70090EC38 /* art.scnassets */,
 			);
 			path = KevinDemo;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				981FCB15215E0993006477F6 /* ARVC.swift */,
+				98DF88F221801883003B6BFD /* PumpkinNode.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -490,6 +499,7 @@
 				98055AAF2147C09E00C3B47D /* LaunchScreen.storyboard in Resources */,
 				98DC8B872176DC730090EC38 /* ShareSDK.bundle in Resources */,
 				98055AAC2147C09E00C3B47D /* Assets.xcassets in Resources */,
+				98DC8BA421798AF70090EC38 /* art.scnassets in Resources */,
 				98DC8B842176DC730090EC38 /* README.txt in Resources */,
 				98DC8B882176DC730090EC38 /* ShareSDKUI.bundle in Resources */,
 				98055AAA2147C09C00C3B47D /* Main.storyboard in Resources */,
@@ -634,6 +644,7 @@
 				981FCB08215B7337006477F6 /* UISearchBar.swift in Sources */,
 				981FCB00215B6E78006477F6 /* Bundle.swift in Sources */,
 				981FCAF9215B6E78006477F6 /* DemonNet.swift in Sources */,
+				98DF88F321801883003B6BFD /* PumpkinNode.swift in Sources */,
 				981FCAFC215B6E78006477F6 /* UserDefaults.swift in Sources */,
 				981FCAFB215B6E78006477F6 /* String.swift in Sources */,
 				981FCAF5215B6E78006477F6 /* UIHelper.swift in Sources */,
@@ -658,6 +669,7 @@
 				981FCB06215B70BF006477F6 /* UIImageView.swift in Sources */,
 				981FCAEF215B6E78006477F6 /* Dynamic.swift in Sources */,
 				981FCB02215B6E78006477F6 /* UINavigationController.swift in Sources */,
+				98DC8BA221782C800090EC38 /* BaseWebVC.swift in Sources */,
 				981FCAEE215B6E78006477F6 /* AppHelper.swift in Sources */,
 				981FCAE9215B6E78006477F6 /* BaseViewController.swift in Sources */,
 				981FCB16215E0993006477F6 /* ARVC.swift in Sources */,
@@ -825,7 +837,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/share/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = liangxinxin.KevinDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ".scale-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KevinDemo/KevinDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -859,7 +871,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/share/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = liangxinxin.KevinDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = ".scale-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KevinDemo/KevinDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

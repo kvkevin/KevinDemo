@@ -11,6 +11,8 @@ import FBSDKShareKit
 
 class HomeVC: BaseViewController,UITableViewDelegate,UITableViewDataSource{
     var tv:UITableView!
+    var dataArray  = ["kevin web","Facebook分享","Instagram分享","图标","弹框"]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,7 @@ class HomeVC: BaseViewController,UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "homecell")
-        cell.textLabel?.text = indexPath.row.description
+        cell.textLabel?.text = dataArray[indexPath.row]
         cell.textLabel?.textColor = UIColor.white
         cell.backgroundColor  = UIColor.randomColor()
         cell.accessoryType = .disclosureIndicator
@@ -58,7 +60,18 @@ class HomeVC: BaseViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AlertHelper.showToastWithMessage(message: indexPath.row.description)
-        shareTofaceBook()
+//        shareTofaceBook()
+        
+        
+        switch indexPath.row {
+        case 0:
+            kevinWeb()
+        default:
+            break
+        }
+        
+        
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -79,6 +92,15 @@ class HomeVC: BaseViewController,UITableViewDelegate,UITableViewDataSource{
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
         self.view.addSubview(button)
      
+        
+    }
+    
+    
+    
+    func kevinWeb(){
+        let web = BaseWebVC()
+        web.webUrl  = "http://www.liangxinxin.xyz"
+        self.navigationController?.pushViewController(web, animated: true)
         
     }
     
